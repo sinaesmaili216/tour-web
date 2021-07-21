@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+    <head>
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+</style>
+        </style>
+    </head>
+   <body>
+   
+    <table>
+        <tr>
+           <th>Title</th>
+           <th>Discription</th>
+           <th>Start Date</th>
+           <th>End Date</th>
+           <th>Price</th>
+           <th>Distance</th>
+           <th>Travel by</th>
+        </tr>
+        
+        {% for row in rows %}
+           <tr>
+              <td>{{row["title"]}}</td>
+              <td>{{row["discribe"]}}</td>
+              <td>{{row["start-date"]}}</td>
+              <td>{{row["end-date"]}}</td>	
+              <td>{{row["price"]}}</td>	
+              <td>{{row["distance"]}}</td>	
+              <td>{{row["travel-by"]}}</td>	
+           </tr>
+        {% endfor %}
+     </table>
+      
+      
+      
+   </body>
+</html>

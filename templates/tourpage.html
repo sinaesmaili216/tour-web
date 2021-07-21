@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        
+        <style>
+            .describ {
+                margin-top: 50px;
+        }
+            .describ-dives {
+                float: left;
+                margin-left: 100px;
+        }
+            .tours {
+                float: left;
+                margin-left: 100px;
+        }
+            .my-pic {
+                height: 150px;
+                width: 310px;
+                border-radius: 15px;
+            }
+            h3 {
+                text-align: center;
+                margin-top: 60px;
+            }
+            button {
+                float: right;
+                color: white;
+                border-radius: 20px;
+                background-color: rgb(35, 189, 35);
+            }
+            textarea {
+                margin-left: 90px;
+                margin-top: 10px;
+                width: 70%;
+                height: 200px;
+                border-radius: 20px;
+                border: 1px solid rgb(194, 193, 193);
+            }
+            .date{
+                border-radius: 15px;
+                margin-left: 90px;
+                margin-top: 10px;
+                border: 1px solid rgb(194, 193, 193);
+            }
+            .my-input {
+                width: 70%;
+                height: 40px;
+                margin-left: 90px;
+                border-radius: 15px;
+                margin-top: 10px;
+                border: 1px solid rgb(194, 193, 193);
+            }
+        </style>
+    </head>
+    <body>
+        <div id="main-content">
+        <button class="btn" data-toggle="modal" data-target="#myModal">create a tour</button>
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                
+                <div class="modal-body">
+                    <div style="background-color: whitesmoke;">
+                        <button class="close" data-dismiss="modal" style="color: white;background-color: black;">&times;</button>
+                        <form enctype="multipart/form-data" id="my-form" action="{{url_for('send')}}" method="POST">
+                            <input class="my-input" id="title" name="title" value="Tour Title"><br>
+                            <textarea name="discribe" id="discribe">Discription</textarea><br>
+                            <input class="date" id="start-date" type="date" name="start-date" value="start date" style="height: 40px;">
+                            <input class="date" id="end-date" type="date" name="end-date" value="end date" style="height: 40px;"><br>
+                            <input class="my-input" id="price" name="price" value="Price"><br>
+                            <input class="my-input" id="distance" name="distance" value="distance"><br>
+                            <input class="my-input" id="travel-by" name="travel-by" value="Travel by"><br>
+                            <input class="btn btn-primary" onclick="createTour()" type="button" value="create" style="margin-top: 25px;margin-left: 250px;">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <img src="/static/images/mainpic.png">
+        <div class="row describ" >
+            <div class="describ-dives">
+                <img src="/static/images/first.png">
+                <p><b>Best Prices</b></p>
+                <p>Pay throughour application and</p>
+                <p>save thousands and get amazing</p>
+                <p>reward</p>
+            </div>
+            <div class="describ-dives">
+                <img src="/static/images/second.png">
+                <p><b>Covid Safe</b></p>
+                <p>We have all the curated hotels that</p>
+                <p>have all the precaution for a corvid</p>
+                <p>safe enviroment</p>
+            </div>
+            <div class="describ-dives">
+                <img src="/static/images/third.png">
+                <p><b>Flexible Payment</b></p>
+                <p>Enjoy the flexible payment through our</p>
+                <p>app and get rewards on every patment</p>
+            </div>
+            <div class="describ-dives">
+                <img src="/static/images/forth.png">
+                <p>Find The Best Near you</p>
+                <p>Find the best place and hotels to visit</p>
+                <p>near you in a singl click</p>
+            </div>
+        </div>
+
+        <h3>Recommended Distination</h3>
+        
+        <div style="margin-top: 40px;">
+            <div class="tours">
+                <img class="my-pic" src="/static/images/singapore.png">
+                <h4>singapore</h4>
+                <p>Singapor,officially the Republic of Singapore,is a</p>
+                <p>sovereign island city-state in maritime Southeast</p>
+                <img src="/static/images/icon.png">
+                <h4 style="float: right;">38,800$</h4>
+                <p>Approx 2 night trip</p>
+            </div>
+            <div class="tours">
+                <img class="my-pic" src="/static/images/thialand.png">
+                <h4>Thailand</h4>
+                <p>Thailand is a Southest Asian country.its known for</p>
+                <p>tropical beaches,opulent royal places</p>
+                <img src="/static/images/icon.png">
+                <h4 style="float: right;">38,800$</h4>
+                <p>Approx 2 night trip</p>
+            </div>
+            <div class="tours">
+                <img class="my-pic" src="/static/images/paris.png">
+                <h4>Paris</h4>
+                <p>Paris Frances capital is a major European city and</p>
+                <p>global center for art,fasion,gastronomy</p>
+                <img src="/static/images/icon.png">
+                <h4 style="float: right;">38,800$</h4>
+                <p>Approx 2 night trip</p>
+            </div>
+        </div>
+
+        
+        <div class="tours" style="margin-top: 50px;">
+            <img class="my-pic" src="/static/images/newzealand.png">
+            <h4>New Zealand</h4>
+            <p>New Zealand is an island country in the</p>
+            <p>50uth western Pacific Ociean.it consists of two main</p>
+            <img src="/static/images/icon.png">
+            <h4 style="float: right;">38,800$</h4>
+            <p>Approx 2 night trip</p>
+        </div>
+        <div class="tours" style="margin-top: 50px;">
+            <img class="my-pic" src="/static/images/borabora.png">
+            <h4>Bora Bora</h4>
+            <p>Bora Bora is a small South Pacific island northwest</p>
+            <p>of Tahiti in French Polynesia.surrounded by sand</p>
+            <img src="/static/images/icon.png">
+            <h4 style="float: right;">38,800$</h4>
+            <p>Approx 2 night trip</p>
+        </div>
+        <div class="tours" style="margin-top: 50px;">
+            <img class="my-pic" src="/static/images/london.png">
+            <h4>London</h4>
+            <p>London,the capital of Englad and the United</p>
+            <p>Kingdom.is a 20st-century city with history</p>
+            <img src="/static/images/icon.png">
+            <h4 style="float: right;">38,800$</h4>
+            <p>Approx 2 night trip</p>
+        </div>
+
+        <div style="width: 90%;height: 20%;float: left;background-color: rgb(199, 195, 195);margin-top: 30px;margin-left: 80px;margin-right: 60px; border-radius: 15px;">
+            <div style="float: left;margin-left: 50px;">Copyright 2020 Travelo.All rights reserved</div>
+            <div style="float: left;margin-left: 120px;">Home</div>
+            <div style="float: left;margin-left: 80px;">About</div>
+            <div style="float: left;margin-left: 80px;">Places</div>
+            <div style="float: left;margin-left: 80px;">Carresrs</div>
+            <div style="float: left;margin-left: 80px;">Blog</div>
+        </div>
+    </div>
+        
+            
+        
+        
+
+    <script>
+        function createTour() {
+            $.post("{{url_for('send')}}",{
+                'title':$("#title").val(),
+                'discribe':$("#discribe").val(),
+                'start_date':$("#start-date").val(),
+                'end_date':$("#end-date").val(),
+                'price':$("#price").val(),
+                'distance':$("#distance").val(),
+                'travel_by':$("#travel-by").val()},function(response, status){
+                $("#main-content").html(response)
+                console.log(status)
+            })
+        }
+        
+    </script>
+
+    </body>
+</html>
